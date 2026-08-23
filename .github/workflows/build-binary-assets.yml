@@ -1,0 +1,44 @@
+name: Build binary portfolio assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'asset_parts/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ hashFiles('asset_parts/READY') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode portfolio assets
+        run: |
+          mkdir -p reports deploy
+          cat asset_parts/report.part* | tr -d '\n' | base64 -d > reports/ltv_case_report.pdf
+          cat asset_parts/operational.part* | tr -d '\n' | base64 -d > deploy/ltv_operational_batch.xlsx
+          echo "23ce27c4d14b885a08713dedff7c379b592f24b1  reports/ltv_case_report.pdf" > /tmp/expected
+          echo "6af4cbf05f774bd273cc26076d9ee26894fbe08a  deploy/ltv_operational_batch.xlsx" >> /tmp/expected
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, sys
+          expected={
+            'reports/ltv_case_report.pdf':'23ce27c4d14b885a08713dedff7c379b592f24b1',
+            'deploy/ltv_operational_batch.xlsx':'6af4cbf05f774bd273cc26076d9ee26894fbe08a',
+          }
+          for p,e in expected.items():
+              b=Path(p).read_bytes(); h=hashlib.sha1(f'blob {len(b)}\0'.encode()+b).hexdigest()
+              print(p, len(b), h)
+              if h != e: sys.exit(f'hash mismatch for {p}')
+          PY
+      - name: Commit generated assets
+        run: |
+          git config user.name 'Juliano Ramos'
+          git config user.email '69549005+julianocramos@users.noreply.github.com'
+          git add reports/ltv_case_report.pdf deploy/ltv_operational_batch.xlsx
+          git rm -r asset_parts
+          git commit -m 'Add final PDF report and operational Excel scorer'
+          git push
