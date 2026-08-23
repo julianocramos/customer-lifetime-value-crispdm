@@ -88,7 +88,7 @@ Four regression approaches were compared with **5-fold cross-validation on the t
 
 The MAE means that individual predictions differ from historical LTV by about **R$ 404 on average in absolute terms**. The model should therefore be used as a **decision-support estimate**, not as a guaranteed future value.
 
-![Model comparison](images/model_comparison.png)
+![Model comparison](images/model_comparison.svg)
 
 ### 6. Deployment
 
@@ -99,7 +99,7 @@ The final linear model was translated into Excel for business use.
 
 Both spreadsheets accept the first purchase value directly in **Brazilian reais (R$)**.
 
-![LTV simulator](images/ltv_simulator_preview.png)
+![LTV simulator](images/ltv_simulator_preview.svg)
 
 ## Business insight: LTV must be interpreted together with customer volume
 
@@ -115,7 +115,7 @@ Average LTV alone can be misleading when segment sizes are very different.
 
 **Lifetime Access** has the highest value per customer, while **Python** produces the largest total historical LTV because of its scale.
 
-![Average LTV vs customer volume](images/ltv_vs_volume_product.png)
+![Average LTV vs customer volume](images/ltv_vs_volume_product.svg)
 
 This distinction is important for acquisition strategy: the most valuable customer segment is not necessarily the segment that contributes the most total economic value.
 
