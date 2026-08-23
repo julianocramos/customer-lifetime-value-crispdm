@@ -156,6 +156,7 @@ customer-lifetime-value-crispdm/
 │
 ├── README.md
 ├── requirements.txt
+├── .gitattributes
 ├── .gitignore
 └── LICENSE
 ```
