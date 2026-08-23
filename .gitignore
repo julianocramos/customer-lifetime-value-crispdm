@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Private / original data
+data/ltv_base_tratada_cardinalidade_final.csv
+data/ltv_base.csv
+
+# OS
+.DS_Store
+Thumbs.db
