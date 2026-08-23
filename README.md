@@ -150,9 +150,9 @@ customer-lifetime-value-crispdm/
 │   └── ltv_operational_batch.xlsx
 │
 ├── images/
-│   ├── ltv_vs_volume_product.png
-│   ├── model_comparison.png
-│   └── ltv_simulator_preview.png
+│   ├── ltv_vs_volume_product.svg
+│   ├── model_comparison.svg
+│   └── ltv_simulator_preview.svg
 │
 ├── README.md
 ├── requirements.txt
