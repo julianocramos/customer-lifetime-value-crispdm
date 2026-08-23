@@ -1,0 +1,48 @@
+name: Finalize LTV portfolio assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'FINALIZE'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install asset dependencies
+        run: pip install matplotlib openpyxl
+      - name: Generate final PDF and operational workbook
+        run: python scripts/build_portfolio_assets.py
+      - name: Validate generated files
+        run: |
+          test -s reports/ltv_case_report.pdf
+          test -s deploy/ltv_operational_batch.xlsx
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          pdf=Path('reports/ltv_case_report.pdf')
+          xlsx=Path('deploy/ltv_operational_batch.xlsx')
+          assert pdf.read_bytes().startswith(b'%PDF')
+          assert zipfile.is_zipfile(xlsx)
+          print('PDF bytes:', pdf.stat().st_size)
+          print('XLSX bytes:', xlsx.stat().st_size)
+          PY
+      - name: Commit final portfolio
+        run: |
+          git config user.name 'Juliano Ramos'
+          git config user.email '69549005+julianocramos@users.noreply.github.com'
+          git add README.md reports/ltv_case_report.pdf deploy/ltv_operational_batch.xlsx
+          git rm -rf asset_parts asset_exact scripts/build_portfolio_assets.py FINALIZE || true
+          git rm -f .github/workflows/build-binary-assets.yml .github/workflows/finalize-assets.yml || true
+          git commit -m 'Finalize LTV portfolio assets'
+          git push
