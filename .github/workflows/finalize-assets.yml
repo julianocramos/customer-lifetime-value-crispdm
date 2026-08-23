@@ -21,8 +21,10 @@ jobs:
           python-version: '3.12'
       - name: Install asset dependencies
         run: pip install matplotlib openpyxl
-      - name: Generate final PDF and operational workbook
-        run: python scripts/build_portfolio_assets.py
+      - name: Patch and generate final portfolio assets
+        run: |
+          python scripts/patch_asset_generator.py
+          python scripts/build_portfolio_assets.py
       - name: Validate generated files
         run: |
           test -s reports/ltv_case_report.pdf
@@ -42,7 +44,7 @@ jobs:
           git config user.name 'Juliano Ramos'
           git config user.email '69549005+julianocramos@users.noreply.github.com'
           git add README.md reports/ltv_case_report.pdf deploy/ltv_operational_batch.xlsx
-          git rm -rf asset_parts asset_exact scripts/build_portfolio_assets.py FINALIZE || true
+          git rm -rf asset_parts asset_exact scripts/build_portfolio_assets.py scripts/patch_asset_generator.py FINALIZE || true
           git rm -f .github/workflows/build-binary-assets.yml .github/workflows/finalize-assets.yml || true
           git commit -m 'Finalize LTV portfolio assets'
           git push
