@@ -1,0 +1,3 @@
+first_purchase_value,recurring_first_purchase,entry_product,sales_channel,gender,education,purchase_month,purchase_day_of_week
+650,0,Power BI,Launch,Female,Higher Education - Complete,3,Wednesday
+950,1,Python,Waitlist,Male,Higher Education+,8,Friday
