@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.t{font-size:23px;font-weight:700}.l{font-size:14px}.a{font-size:15px}</style>
+<text x="450.0" y="32" text-anchor="middle" class="t">Average LTV vs Customer Volume by Entry Product</text>
+<line x1="100" y1="440" x2="860" y2="440" stroke="#777"/><line x1="100" y1="70" x2="100" y2="440" stroke="#777"/>
+<text x="450.0" y="500" text-anchor="middle" class="a">Number of customers</text>
+<text x="25" y="260.0" transform="rotate(-90 25 260.0)" text-anchor="middle" class="a">Average LTV (R$)</text>
+<circle cx="129.6" cy="391.2" r="6" fill="#2E75B6"/><line x1="129.6" y1="391.2" x2="139.6" y2="381.2" stroke="#999"/><text x="139.6" y="381.2" class="l">Data Analysis</text>
+<circle cx="125.8" cy="324.3" r="6" fill="#2E75B6"/><line x1="125.8" y1="324.3" x2="40.8" y2="316.3" stroke="#999"/><text x="40.8" y="316.3" class="l">Data Science</text>
+<circle cx="153.0" cy="345.1" r="6" fill="#2E75B6"/><line x1="153.0" y1="345.1" x2="163.0" y2="335.1" stroke="#999"/><text x="163.0" y="335.1" class="l">Commercial</text>
+<circle cx="765.8" cy="421.9" r="6" fill="#2E75B6"/><line x1="765.8" y1="421.9" x2="685.8" y2="411.9" stroke="#999"/><text x="685.8" y="411.9" class="l">Community</text>
+<circle cx="393.1" cy="396.1" r="6" fill="#2E75B6"/><line x1="393.1" y1="396.1" x2="403.1" y2="386.1" stroke="#999"/><text x="403.1" y="386.1" class="l">Excel</text>
+<circle cx="130.8" cy="397.0" r="6" fill="#2E75B6"/><line x1="130.8" y1="397.0" x2="140.8" y2="417.0" stroke="#999"/><text x="140.8" y="417.0" class="l">Full Stack JS</text>
+<circle cx="153.5" cy="358.5" r="6" fill="#2E75B6"/><line x1="153.5" y1="358.5" x2="163.5" y2="378.5" stroke="#999"/><text x="163.5" y="378.5" class="l">Other</text>
+<circle cx="528.7" cy="360.7" r="6" fill="#2E75B6"/><line x1="528.7" y1="360.7" x2="538.7" y2="350.7" stroke="#999"/><text x="538.7" y="350.7" class="l">Power BI</text>
+<circle cx="803.7" cy="389.4" r="6" fill="#2E75B6"/><line x1="803.7" y1="389.4" x2="738.7" y2="379.4" stroke="#999"/><text x="738.7" y="379.4" class="l">Python</text>
+<circle cx="199.0" cy="95.4" r="6" fill="#2E75B6"/><line x1="199.0" y1="95.4" x2="209.0" y2="85.4" stroke="#999"/><text x="209.0" y="85.4" class="l">Lifetime Access</text>
+</svg>
