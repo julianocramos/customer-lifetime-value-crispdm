@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.t{font-size:24px;font-weight:700}.l{font-size:16px}.v{font-size:15px;font-weight:700}</style>
+<text x="450.0" y="35" text-anchor="middle" class="t">Model Comparison - Test R²</text>
+<line x1="90" y1="390" x2="860" y2="390" stroke="#999"/>
+<rect x="130" y="390.0" width="130" height="0.0" rx="5" fill="#4F81BD"/>
+<text x="195.0" y="380.0" text-anchor="middle" class="v">-0.0001</text>
+<text x="195.0" y="418" text-anchor="middle" class="l">Dummy</text>
+<rect x="315" y="126.24" width="130" height="263.76" rx="5" fill="#4F81BD"/>
+<text x="380.0" y="116.24" text-anchor="middle" class="v">0.8478</text>
+<text x="380.0" y="418" text-anchor="middle" class="l">Linear</text>
+<rect x="500" y="127.02" width="130" height="262.98" rx="5" fill="#4F81BD"/>
+<text x="565.0" y="117.02" text-anchor="middle" class="v">0.8453</text>
+<text x="565.0" y="418" text-anchor="middle" class="l">Poly (d=2)</text>
+<rect x="685" y="133.99" width="130" height="256.01" rx="5" fill="#4F81BD"/>
+<text x="750.0" y="123.99" text-anchor="middle" class="v">0.8229</text>
+<text x="750.0" y="418" text-anchor="middle" class="l">RF</text>
+</svg>
