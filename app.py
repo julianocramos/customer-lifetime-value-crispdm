@@ -223,7 +223,7 @@ table_col, chart_col = st.columns([1.1, 1])
 with table_col:
     st.dataframe(
         contribution_df,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         column_config={
             "Impact on LTV (R$)": st.column_config.NumberColumn(
