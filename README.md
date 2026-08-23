@@ -1,8 +1,26 @@
 # Customer Lifetime Value Prediction | CRISP-DM
 
-End-to-end **Customer Lifetime Value (LTV)** regression project developed with the **CRISP-DM methodology**, covering business understanding, data preparation, model comparison, cross-validation, evaluation, and an Excel-based deployment prototype.
+End-to-end **Customer Lifetime Value (LTV)** regression project developed with the **CRISP-DM methodology**, covering business understanding, data preparation, model comparison, cross-validation, evaluation, and deployment through an interactive **Streamlit application** and Excel-based business tools.
 
 > **Portfolio note:** This repository contains my own code, analysis, write-up, and deployment artifacts created from an educational case study. The original course material and the original full dataset are not redistributed.
+
+## 🚀 Live Demo
+
+**Try the interactive Customer LTV Simulator:**
+
+[Open the Streamlit app](https://julianocramos-ltv-simulator.streamlit.app)
+
+The web application allows users to enter first-purchase customer characteristics and receive an immediate LTV prediction from the selected Linear Regression model.
+
+It also displays:
+
+- predicted Customer Lifetime Value
+- model test performance
+- feature-level contribution to the prediction
+- direction of each contribution
+- reference-category interpretation
+
+The application uses the fitted parameters of the selected model, allowing the deployment demo to run without redistributing the original educational dataset.
 
 ## Project objective
 
@@ -35,11 +53,15 @@ Because **LTV is a continuous monetary target**, this is a **supervised regressi
 
 ### 1. Business Understanding
 
-The model must estimate expected LTV using **only information available at the first purchase**. This avoids future-information leakage and keeps the prediction useful for real acquisition decisions.
+The model must estimate expected LTV using **only information available at the first purchase**.
+
+This avoids future-information leakage and keeps the prediction useful for real acquisition decisions.
 
 ### 2. Data Understanding
 
-The prepared modeling dataset contains **38,753 customers**. The features used for modeling are:
+The prepared modeling dataset contains **38,753 customers**.
+
+The features used for modeling are:
 
 - first purchase value
 - whether the first purchase is recurring
@@ -86,15 +108,42 @@ Four regression approaches were compared with **5-fold cross-validation on the t
 | **RMSE** | **R$ 507.74** |
 | **MAE** | **R$ 404.03** |
 
-The MAE means that individual predictions differ from historical LTV by about **R$ 404 on average in absolute terms**. The model should therefore be used as a **decision-support estimate**, not as a guaranteed future value.
+The MAE means that individual predictions differ from historical LTV by about **R$ 404 on average in absolute terms**.
+
+The model should therefore be used as a **decision-support estimate**, not as a guaranteed future customer value.
 
 ![Model comparison](images/model_comparison.png)
 
 ### 6. Deployment
 
-The final linear model was translated into Excel for business use.
+The selected Linear Regression model was deployed in two complementary formats.
 
-- [`deploy/ltv_explained_simulator.xlsx`](deploy/ltv_explained_simulator.xlsx): single-customer simulator that shows the predicted LTV and the contribution of each feature.
+#### Interactive web application
+
+The Streamlit application provides a browser-based interface for scoring individual customer profiles.
+
+[Launch the Customer LTV Simulator](https://julianocramos-ltv-simulator.streamlit.app)
+
+Users can provide:
+
+- first purchase value
+- recurring status
+- entry product
+- sales channel
+- gender
+- education
+- purchase month
+- purchase day of week
+
+The app immediately returns the predicted LTV together with the test metrics and a breakdown of each feature's contribution to the estimate.
+
+The Streamlit deployment uses the fitted parameters of the selected final model and therefore does not require the original dataset at runtime.
+
+#### Excel business tools
+
+Two Excel deployment artifacts are also included:
+
+- [`deploy/ltv_explained_simulator.xlsx`](deploy/ltv_explained_simulator.xlsx): single-customer simulator showing the predicted LTV and the contribution of each feature.
 - [`deploy/ltv_operational_batch.xlsx`](deploy/ltv_operational_batch.xlsx): operational table for scoring multiple new customers.
 
 Both spreadsheets accept the first purchase value directly in **Brazilian reais (R$)**.
@@ -154,52 +203,9 @@ customer-lifetime-value-crispdm/
 │   ├── model_comparison.png
 │   └── ltv_simulator_preview.png
 │
+├── app.py
 ├── README.md
 ├── requirements.txt
 ├── .gitattributes
 ├── .gitignore
 └── LICENSE
-```
-
-## Technologies
-
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Jupyter Notebook
-- Excel
-
-## Reproducing the project
-
-The original educational dataset is intentionally not included.
-
-If you have authorized access to the prepared dataset, place it at:
-
-```text
-data/ltv_base_tratada_cardinalidade_final.csv
-```
-
-The pipeline automatically translates the original Portuguese schema to the English modeling schema.
-
-Install the dependencies and run:
-
-```bash
-pip install -r requirements.txt
-python src/ltv_pipeline.py
-```
-
-## Limitations and next steps
-
-- Add **temporal validation** instead of relying only on a random split.
-- Monitor model drift and recalibrate the model as newer customer cohorts mature.
-- Add prediction intervals or another explicit uncertainty estimate.
-- Convert predicted LTV into a CAC policy using contribution margin, risk, and payback.
-- Review whether demographic variables are appropriate for production targeting.
-
-## Author
-
-**Juliano Ramos**
-
-Data Science / Data Analytics portfolio project.
